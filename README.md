@@ -19,15 +19,16 @@ Run the `build_train_generate.py` script when you want to build, compile and tra
 The script does the following:
 
 1. Read the .pcap files, process it into suitable format for ML model
-
 2. Build and compile the VAE-LSTM hybrid model
-
 3. Train the model
-
 4. Generate a specific number (defined by variable `num_samples`) of packet payload
-
 5. Save these payloads as byte objects in a binary file (called `bytes_list.bin`) that will be used by the socket program
 
-##Generate
-Run the `generate.py` script when you do not want to train the model by yourself. 
+## Generate
+Run the `generate.py` script when you do not want to train the model by yourself. This script does the following:
+
+1. Build and compile the VAE-LSTM hybrid model
+2. load the weights from the file `model_weights.h5`
+3. Generate a specific number (defined by variable `num_samples`) of packet payload
+4. Save these payloads as byte objects in a binary file (called `bytes_list.bin`) that will be used by the socket program
 
