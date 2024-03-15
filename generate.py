@@ -60,7 +60,7 @@ def sampling(args):
     epsilon = K.random_normal(shape=(batch, dim))
     return z_mean + K.exp(0.5 * z_log_var) * epsilon
 
-Lambda(sampling, output_shape=(latent_dim,))([z_mean, z_log_var])
+z = Lambda(sampling, output_shape=(latent_dim,))([z_mean, z_log_var])
 
 # Encoder model
 encoder = Model(inputs, [z_mean, z_log_var, z], name='encoder')
