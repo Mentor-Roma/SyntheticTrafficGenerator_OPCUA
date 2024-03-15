@@ -85,7 +85,7 @@ outputs = decoder(encoder(inputs)[2])
 vae = Model(inputs, outputs, name='vae_lstm')
 
 # Add VAE loss
-reconstruction_loss = tf.keras.losses.mean_squared_error(K.flatten(inputs), K.flatten(outputs))
+reconstruction_loss = tf.keras.losses.mean_squared_error(tf.reshape(inputs, shape=[-1]), tf.reshape(outputs, shape=[-1]))
 #reconstruction_loss *= timesteps * input_dimension
 kl_loss = 1 + z_log_var - K.square(z_mean) - K.exp(z_log_var)
 kl_loss = K.sum(kl_loss, axis=-1)
